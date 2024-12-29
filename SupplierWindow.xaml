@@ -1,0 +1,109 @@
+﻿<Window x:Class="IMS.MainMenu.SupplierWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Supplier Management"
+        Height="968" Width="1065"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryColor" Color="#1B263B"/>
+        <SolidColorBrush x:Key="SecondaryColor" Color="#415A77"/>
+        <SolidColorBrush x:Key="AccentColor" Color="#E0E1DD"/>
+        <SolidColorBrush x:Key="HoverColor" Color="#778DA9"/>
+        <SolidColorBrush x:Key="TextColor" Color="#E0E1DD"/>
+        <SolidColorBrush x:Key="CardBackgroundColor" Color="#2C3E50"/>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource SecondaryColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="3"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="{StaticResource PrimaryColor}" Margin="0,25,-10,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="550*"/>
+            <ColumnDefinition Width="46*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="334*"/>
+            <ColumnDefinition Width="105*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Title Section -->
+        <Border Background="{StaticResource SecondaryColor}" Padding="20" VerticalAlignment="Top" Height="260" Grid.ColumnSpan="7" Margin="0,-31,5,0">
+            <TextBlock Text="Supplier Management" Foreground="{StaticResource TextColor}" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- Supplier Form Section -->
+        <Grid Margin="20,209,5,-93" Grid.ColumnSpan="6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="104*"/>
+                <ColumnDefinition Width="105*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Section: Supplier Form -->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Height="410" Width="272">
+                <Border Background="{StaticResource CardBackgroundColor}" Padding="20" BorderBrush="{StaticResource TextColor}" BorderThickness="1">
+                    <StackPanel>
+                        <!-- Supplier Name (Bold) -->
+                        <TextBlock Text="Supplier Name" Foreground="{StaticResource TextColor}" FontSize="18" FontWeight="Bold" Margin="10"/>
+                        <TextBox x:Name="SupplierNameTextBox" Width="200" Margin="15"/>
+
+                        <!-- Contact Name (Bold) -->
+                        <TextBlock Text="Contact Name" Foreground="{StaticResource TextColor}" FontSize="18" FontWeight="Bold" Margin="10"/>
+                        <TextBox x:Name="ContactNameTextBox" Width="200" Margin="15"/>
+
+                        <TextBlock Text="Email" Foreground="{StaticResource TextColor}" FontSize="18" FontWeight="Normal" Margin="10"/>
+                        <TextBox x:Name="EmailTextBox" Width="200" Margin="15"/>
+
+                        <TextBlock Text="Address" Foreground="{StaticResource TextColor}" FontSize="18" FontWeight="Normal" Margin="10"/>
+                        <TextBox x:Name="AddressTextBox" Width="200" Margin="15"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Right Section: Actions (Add, Update, Delete) -->
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Height="470" Width="308" Margin="0,50,0,0">
+                <Button Content="Add Supplier" Style="{StaticResource ButtonStyle}" Click="AddSupplierButton_Click"/>
+                <Button Content="Update Supplier" Style="{StaticResource ButtonStyle}" Click="UpdateSupplierButton_Click"/>
+                <Button Content="Delete Supplier" Style="{StaticResource ButtonStyle}" Click="DeleteSupplierButton_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Save Supplier Details Box Section -->
+        <Border Background="{StaticResource CardBackgroundColor}" BorderBrush="{StaticResource TextColor}" BorderThickness="1" Margin="54,515,0,0" Padding="15" VerticalAlignment="Top" HorizontalAlignment="Left" Height="154" Width="290" Grid.Column="3" Grid.ColumnSpan="2">
+            <StackPanel>
+                <TextBlock Text="Save Supplier Details" Foreground="{StaticResource TextColor}" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                <!-- Supplier details will be dynamically added here -->
+                <StackPanel x:Name="SavedSupplierDetailsStackPanel">
+                    <!-- Saved details will be displayed here after clicking "Add Supplier" -->
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

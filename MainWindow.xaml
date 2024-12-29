@@ -1,0 +1,138 @@
+﻿<Window x:Class="IMS.MainMenu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Inventory Management System"
+        Height="770" Width="965"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!-- Define color palette -->
+        <SolidColorBrush x:Key="PrimaryColor" Color="#1B263B"/>
+        <SolidColorBrush x:Key="SecondaryColor" Color="#415A77"/>
+        <SolidColorBrush x:Key="AccentColor" Color="#E0E1DD"/>
+        <SolidColorBrush x:Key="HoverColor" Color="#778DA9"/>
+        <SolidColorBrush x:Key="TextColor" Color="#E0E1DD"/>
+        <SolidColorBrush x:Key="CardBackgroundColor" Color="#2C3E50"/>
+
+        <!-- Style for the Window -->
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+        </Style>
+
+        <!-- Style for Title Section -->
+        <Style x:Key="TitleTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,40,0,20"/>
+        </Style>
+
+        <!-- Style for Card and Button -->
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource CardBackgroundColor}"/>
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" BlurRadius="8" ShadowDepth="4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource SecondaryColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" BlurRadius="5" ShadowDepth="2"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource HoverColor}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,10,26" VerticalAlignment="Bottom" Height="701">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="465*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="289*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Title Section -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="{StaticResource SecondaryColor}" Padding="20" HorizontalAlignment="Right" Width="976" Margin="0,-46,-15,0" Grid.ColumnSpan="4">
+            <TextBlock Text="Inventory Management System Dashboard" Style="{StaticResource TitleTextStyle}" Width="822"/>
+        </Border>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="20,40,20,40" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Section -->
+            <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Products" FontSize="18" Foreground="{StaticResource AccentColor}" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <Button x:Name="ShowProductsButton" Content="Manage Products" Style="{StaticResource ButtonStyle}" Click="ShowProductsButton_Click"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Categories" FontSize="18" Foreground="{StaticResource AccentColor}" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <Button x:Name="ShowCategoriesButton" Content="Manage Categories" Style="{StaticResource ButtonStyle}" Click="ShowCategoriesButton_Click"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Right Section -->
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Orders" FontSize="18" Foreground="{StaticResource AccentColor}" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <Button x:Name="ShowOrdersButton" Content="Manage Orders" Style="{StaticResource ButtonStyle}" Click="ShowOrdersButton_Click"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="Suppliers" FontSize="18" Foreground="{StaticResource AccentColor}" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <Button x:Name="ShowSuppliersButton" Content="Manage Suppliers" Style="{StaticResource ButtonStyle}" Click="ShowSuppliersButton_Click"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <!-- Exit Button Section -->
+        <Grid Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="342,0,0,0" Grid.ColumnSpan="2">
+            <Border Style="{StaticResource CardStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
+                <StackPanel>
+                    <TextBlock Text="Exit" FontSize="18" Foreground="{StaticResource AccentColor}" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <Button x:Name="ExitButton" Content="Exit" Style="{StaticResource ButtonStyle}" Click="ExitButton_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

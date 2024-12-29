@@ -1,4 +1,3 @@
-
 CREATE DATABASE InventoryManagement10;
 
 USE InventoryManagement10;
@@ -203,6 +202,3 @@ VALUES
     (3, 'Books', 'Printed books and novels');
 
  select * from Categories9  ; 
-
-
- 
